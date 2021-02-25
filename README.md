@@ -2,4 +2,4 @@
 
 ## Typing game
 
-https://rksan.github.io/training/typinggame
+[Link](https://rksan.github.io/training/typinggame)
