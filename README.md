@@ -2,12 +2,13 @@
 
 ## Typing game
 
-[Link](https://rksan.github.io/training/typinggame/v1.1.0)
+<a href="https://rksan.github.io/training/typinggame/v1.1.0" targtarget="_blank">Link</a>
 
 #### history
 - version 1.1.0
     + 修正
         * ver 1.0.0-1 を修正
+        * ReadMe のリンクターゲットを`_blank`指定
 - version 1.0.0
     + 初版
     + 既知のバグ
