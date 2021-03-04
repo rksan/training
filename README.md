@@ -2,7 +2,7 @@
 
 ## Typing game
 
-<a href="https://rksan.github.io/training/typinggame/v1.1.0" targtarget="_blank">Link</a>
+<a href="https://rksan.github.io/training/typinggame/v1.1.0" target="_blank">Link</a>
 
 #### history
 - version 1.1.0
