@@ -51,16 +51,17 @@
     }
 
     document.addEventListener('keydown', function (event) {
-        var keyCode = event.code || String(event.which || event.keyCode);
+        var keyCode = String(event.which || event.keyCode);
+        var code = event.code;
         var key = '';
 
-        if (keyCode === 13) { //enter key
+        if (code === 'Enter') { //enter key
             init();
             return;
-        }else if (keyCode === 32) { //space key
+        } else if (code === 'Space') { //space key
             key = ' ';
-        }else{
-            key = event.key || String.fromCharCode(keyCode);;
+        } else {
+            key = event.key || String.fromCharCode(keyCode);
         }
 
         if (key) {
