@@ -5,6 +5,9 @@
 
 [Link](https://rksan.github.io/training/typinggame/latest)
 
+参考：https://schoo.jp/class/2130
+
+
 #### history
 - version 1.1.x
     + 修正
