@@ -22,3 +22,12 @@
     + 非推奨コード
         * × [KeybordEvent.keyCode](https://developer.mozilla.org/ja/docs/Web/API/KeyboardEvent/keyCode) -> ○ [KeybordEvent.code](https://developer.mozilla.org/ja/docs/Web/API/KeyboardEvent/code)
 
+## Slot Game
+
+[Link](https://rksan.github.io/training/slotggame/latest)
+
+参考：https://schoo.jp/class/1908
+
+#### history
+- version 1.0.0
+    + 初版
