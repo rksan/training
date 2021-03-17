@@ -1,6 +1,11 @@
 # Training
 **※ページ内のリンクを別タブで開くには [Ctrl] キーを押しながらリンクを Click してください**
 
+## 目次
+- [Typing game](#typinggame)
+- [Slot game](#slotgame)
+
+<a name="typinggame"></a>
 ## Typing game
 
 [Link](https://rksan.github.io/training/typinggame/latest)
@@ -22,6 +27,9 @@
     + 非推奨コード
         * × [KeybordEvent.keyCode](https://developer.mozilla.org/ja/docs/Web/API/KeyboardEvent/keyCode) -> ○ [KeybordEvent.code](https://developer.mozilla.org/ja/docs/Web/API/KeyboardEvent/code)
 
+
+
+<a name="slotgame"></a>
 ## Slot Game
 
 [Link](https://rksan.github.io/training/slotgame/latest)
