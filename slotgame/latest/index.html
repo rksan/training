@@ -139,8 +139,9 @@
         // 繰り返し処理のタイマーを停止してスロット停止
         clearTimeout(timers[num]);
 
-        //results[num] = document.getElementById("slot" + num).textContent;
-        results[num] = parseInt(buttons[num].textContent, 10);
+        var elem = document.getElementById("slot" + num);
+        results[num] = parseInt(elem.textContent, 10);
+
         buttons[num].disabled = true; // 無効化
 
         // 全てのスロットが止まっていたら結果を取得
@@ -156,7 +157,7 @@
         if (results[0] == results[1]) {
           alert("Excellent!");
 
-          scre += 100;
+          score += 100;
 
           updateScore();
 
