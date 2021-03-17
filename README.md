@@ -1,3 +1,4 @@
+<a name="pagetop"></a>
 # Training
 **※ページ内のリンクを別タブで開くには [Ctrl] キーを押しながらリンクを Click してください**
 
@@ -29,7 +30,7 @@
 
 
 
-<a name="slotgame"></a>
+[↑戻る](#pagetop)<a name="slotgame"></a>
 ## Slot Game
 
 [Link](https://rksan.github.io/training/slotgame/latest)
@@ -39,3 +40,5 @@
 #### history
 - version 1.0.0
     + 初版
+
+[↑戻る](#pagetop)
