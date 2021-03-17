@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>スロットアプリ</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+      .app-container {
+        width: 100%;
+        /*height: 100%;*/
+        margin: auto;
+        text-align: center;
+      }
+      .app-footer {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+      }
+      .slot {
+        display: inline-block;
+        /*float: left;*/
+        width: 150px;
+        text-align: center;
+        font-size: 40px;
+      }
+    </style>
+    <!-- twitter API -->
+    <!-- @ref (https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites) -->
+    <script>
+      window.twttr = (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+        if (d.getElementById(id)) return t;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js, fjs);
+
+        t._e = [];
+        t.ready = function (f) {
+          t._e.push(f);
+        };
+
+        return t;
+      })(document, "script", "twitter-wjs");
+    </script>
+    <!-- /twitter API -->
+  </head>
+  <body>
+    <div class="app-container">
+      <h1>間違えたら即終了！　無限スロット！</h1>
+      <p>現在の得点：<span id="score">0</span></p>
+      <div class="slot">
+        <div id="slot0">0</div>
+        <input type="button" value="STOP" class="slot-button" id="stop0" />
+      </div>
+      <div class="slot">
+        <div id="slot1">0</div>
+        <input type="button" value="STOP" class="slot-button" id="stop1" />
+      </div>
+    </div>
+    <div class="app-footer">
+      <!-- tweet button -->
+      <div id="tweet-area"></div>
+      <!-- /tweet button -->
+    </div>
+    <script>
+      /* ブラウザが読み込まれたタイミングで実行される処理 */
+      // 変数の初期化
+      var timers = []; // 各スロット回転用のタイマー格納
+      var results = []; // 各スロット停止時の値を格納
+      var stopCount = 0; // スロットの停止台数
+      var score = 0;
+
+      // ストップボタン
+      var buttons = document.querySelectorAll(".slot-button");
+
+      buttons = Array.from(buttons);
+
+      buttons.forEach(function (btn, idx) {
+        btn.addEventListener("click", function (event) {
+          stopSlot(idx);
+        });
+      });
+
+      // スロット開始
+      startSlot();
+
+      /* 関数群 */
+      // 全てのスロットをスタートさせる
+      function startSlot() {
+        // 初期化
+        stopCount = 0;
+        timers = [];
+        results = [];
+
+        // slot-button
+        buttons.forEach(function(btn){
+            btn.disabled = false; // 無効化を解除
+        });
+
+        // スロット回転開始
+        runSlot(0);
+        runSlot(1);
+      }
+
+      // 各スロットの値を0~9で変化させる
+      function runSlot(num) {
+        var elem = document.getElementById("slot" + num);
+        var slotValue = parseInt(elem.textContent, 10);
+
+        if (slotValue < 9) {
+          slotValue++;
+        } else {
+          slotValue = 0;
+        }
+
+        elem.textContent = slotValue;
+
+        // 自分自身(runSlot)を呼び出して、処理を繰り返す
+        timers[num] = setTimeout(function () {
+          runSlot(num);
+        }, 400);
+      }
+
+      // 各スロットを止める
+      function stopSlot(num) {
+        // 繰り返し処理のタイマーを停止してスロット停止
+        clearTimeout(timers[num]);
+
+        //results[num] = document.getElementById("slot" + num).textContent;
+        results[num] = parseInt(buttons[num].textContent, 10);
+        buttons[num].disabled = true; // 無効化
+
+        // 全てのスロットが止まっていたら結果を取得
+        stopCount++;
+        if (stopCount == 2) {
+          checkResult();
+        }
+      }
+
+      // 結果を取得する
+      function checkResult() {
+        // スロットが揃ったかチェックする
+        if (results[0] == results[1]) {
+          alert("Excellent!");
+
+          scre += 100;
+
+          updateScore();
+
+          startSlot();
+        } else {
+          gameover();
+        }
+      }
+
+      function updateScore() {
+        var target = document.getElementById("score");
+
+        target.textContent = score;
+      }
+
+      function gameover() {
+        alert("GAME OVER");
+        //@todo twitter ボタンを表示する処理を各
+        getTweetBtn();
+      }
+
+      function getTweetBtn() {
+        var elem = document.getElementById("tweet-area");
+
+        //@ref (https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/javascript-factory-function)
+        twttr.widgets.createShareButton("https://schoo.co.jp", elem, {
+          text: "得点： " + document.querySelector("#score").textContent + " 点でした。",
+        });
+      }
+    </script>
+  </body>
+</html>
