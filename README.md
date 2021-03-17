@@ -24,7 +24,7 @@
 
 ## Slot Game
 
-[Link](https://rksan.github.io/training/slotggame/latest)
+[Link](https://rksan.github.io/training/slotgame/latest)
 
 参考：https://schoo.jp/class/1908
 
